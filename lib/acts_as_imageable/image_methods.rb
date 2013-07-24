@@ -18,12 +18,6 @@ module ActsAsImageable
     end
 
     module Finders
-      # Helper class method to lookup all images assigned
-      # to all imageable types for a given user.
-      def find_images_by_user(user, role = "images")
-        where(["user_id = ? and role = ?", user.id, role]).order("created_at DESC")
-      end
-
       # Helper class method to look up all images for
       # imageable class name and imageable id.
       def find_images_for_imageable(imageable_str, imageable_id)
@@ -36,6 +30,7 @@ module ActsAsImageable
         model = imageable_str.constantize
         model.respond_to?(:find_images_for) ? model.find(imageable_id) : nil
       end
+
     end
   end
 end

@@ -1,7 +1,7 @@
 require 'active_record'
 
 # ActsAsImageable
-module YourMajesty
+module ActsAsImageable
   module Acts #:nodoc:
     module Imageable #:nodoc:
 
@@ -40,11 +40,6 @@ module YourMajesty
                 Image.find_images_for_imageable(imageable, obj.id, "#{role.to_s}")
               end
 
-              def self.find_#{method_name}_by_user(user)
-                imageable = self.base_class.name
-                Image.where(["user_id = ? and imageable_type = ? and role = ?", user.id, imageable, "#{role.to_s}"]).order("created_at DESC")
-              end
-
               def #{method_name}_ordered_by_submitted
                 Image.find_images_for_imageable(self.class.name, id, "#{role.to_s}")
               end
@@ -61,4 +56,4 @@ module YourMajesty
   end
 end
 
-ActiveRecord::Base.send(:include, YourMajesty::Acts::Imageable)
+ActiveRecord::Base.send(:include, ActsAsImageable::Acts::Imageable)

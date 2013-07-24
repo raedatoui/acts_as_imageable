@@ -3,14 +3,13 @@ class CreateImages < ActiveRecord::Migration
     create_table :images do |t|
       t.string :file
       t.references :imageable, :polymorphic => true
-      t.references :user
       t.string :role, :default => "images"
       t.timestamps
     end
 
     add_index :images, :imageable_type
     add_index :images, :imageable_id
-    add_index :images, :user_id
+
   end
 
   def self.down

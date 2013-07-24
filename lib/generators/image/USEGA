@@ -1,6 +1,0 @@
-Description:
-    Copies image.rb to app/models/.
-    Copies create_image.rb to db/migrate
-
-Examples:
-    `rails generate image`

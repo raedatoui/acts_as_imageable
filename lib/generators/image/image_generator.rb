@@ -13,6 +13,7 @@ class ImageGenerator < Rails::Generators::Base
 
   def create_model_file
     template "image.rb", "app/models/image.rb"
+    template "file_uploader.rb", "app/uploaders/acts_as_imageable/file_uploader.rb"
     migration_template "create_images.rb", "db/migrate/create_images.rb"
   end
 end

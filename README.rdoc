@@ -1,0 +1,9 @@
+To Do
+
+* clean up tests
+
+* include carrier wave
+
+* whitelist file extensions: omly images
+
+* choose image processor: rmagick -> check carrierwave wiki

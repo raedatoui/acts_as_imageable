@@ -24,6 +24,9 @@ Gem::Specification.new do |s|
 
   # File field
   s.add_dependency "carrierwave"
+  s.add_dependency "rmagick"
 
+  # Optional -  Serializer
+  # s.add_dependency "active_model_serializers", "~> 0.8.0"
 
 end

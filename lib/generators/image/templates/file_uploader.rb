@@ -2,11 +2,11 @@
 
 class ActsAsImageable::FileUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
 
   storage :file
+
+  CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
   def extension_white_list
     %w(jpg jpeg gif png)
@@ -14,6 +14,14 @@ class ActsAsImageable::FileUploader < CarrierWave::Uploader::Base
 
   def store_dir
     "images/#{model.imageable.class.to_s.underscore}/#{model.imageable.id}/#{model.id}"
+  end
+
+  version :medium do
+    process resize_to_fit: [280, 2000000]
+  end
+
+  version :small do
+    process resize_to_fit: [120, 2000000]
   end
 
 end

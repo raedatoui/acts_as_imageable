@@ -12,10 +12,9 @@ Gem::Specification.new do |s|
   s.homepage    = %q{http://your-majesty.com}
 
 
-  s.files =  Dir["lib/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files =  Dir["lib/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
   s.has_rdoc = false
-  s.extra_rdoc_files = ["README.rdoc", "MIT-LICENSE"]
 
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}

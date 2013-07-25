@@ -8,8 +8,4 @@ class Image < ActiveRecord::Base
 
   mount_uploader :file, ActsAsImageable::FileUploader
 
-  def active_model_serializer
-    ActsAsImageable::ImageSerializer
-  end
-
 end

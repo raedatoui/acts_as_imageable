@@ -26,15 +26,19 @@ module ActsAsImageable
                   :dependent => :destroy,
                   :conditions => ["role = ?", role.to_s],
                   :before_add => Proc.new { |x, c| c.role = role.to_s }}
+               self.accepts_nested_attributes_for "#{role.to_s}_images".to_sym
             end
             has_many :all_images, {:as => :imageable, :dependent => :destroy, class_name: "Image"}
           else
             has_many :images, {:as => :imageable, :dependent => :destroy}
+            self.accepts_nested_attributes_for :images
           end
+
 
           image_types.each do |role|
             method_name = (role == :images ? "images" : "#{role.to_s}_images").to_s
             class_eval %{
+
               def self.find_#{method_name}_for(obj)
                 imageable = self.base_class.name
                 Image.find_images_for_imageable(imageable, obj.id, "#{role.to_s}")

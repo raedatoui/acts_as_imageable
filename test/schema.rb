@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(version: 0) do
   create_table :posts do |t|
     t.text :text
     t.datetime
@@ -11,5 +11,4 @@ ActiveRecord::Schema.define(:version => 0) do
   create_table :walls do |w|
     w.string :name
   end
-
 end

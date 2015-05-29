@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 class ActsAsImageable::FileUploader < CarrierWave::Uploader::Base
-
   include CarrierWave::RMagick
 
   storage :file
@@ -17,11 +16,10 @@ class ActsAsImageable::FileUploader < CarrierWave::Uploader::Base
   end
 
   version :medium do
-    process resize_to_fit: [280, 2000000]
+    process resize_to_fit: [280, 2_000_000]
   end
 
   version :small do
-    process resize_to_fit: [120, 2000000]
+    process resize_to_fit: [120, 2_000_000]
   end
-
 end

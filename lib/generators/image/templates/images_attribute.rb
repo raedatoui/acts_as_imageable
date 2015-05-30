@@ -3,12 +3,9 @@ module ActsAsImageable
     extend ActiveSupport::Concern
 
     included do
-
       def attributes
-        super.merge "images" => self.images
+        super.merge 'images' => images
       end
-
     end
-
   end
 end
